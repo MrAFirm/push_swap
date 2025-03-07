@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_b.c                                           :+:      :+:    :+:   */
+/*   putchar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 18:19:20 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/07 21:26:19 by lkhye-ya         ###   ########.fr       */
+/*   Created: 2024/07/12 16:57:56 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2024/07/18 21:08:21 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "ft_printf.h"
 
-int push_b(t_stack_a *stack_a, t_stack_b *stack_b)
+int	ft_putchar(int c)
 {
-    if (stack_a && stack_b)
-    {
-        stack_b->top->number = stack_a->push_num;
-        stack_a->push_num = stack_b->next_num;
-    }
-    write(1, "pb", 2);
-    return (EXIT_SUCCESS);
+	char	i;
+
+	i = (char)c;
+	write(1, &i, 1);
+	return (1);
 }

@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_b.c                                           :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 18:19:20 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/07 21:26:19 by lkhye-ya         ###   ########.fr       */
+/*   Created: 2025/03/07 19:49:27 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2025/03/07 21:34:43 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int push_b(t_stack_a *stack_a, t_stack_b *stack_b)
+int main(int argc, char **argv)
 {
-    if (stack_a && stack_b)
+    t_stack_a   *stack_a;
+    t_stack_b   *stack_b;
+    t_node      *node;
+    int         index;
+    int         result;
+
+    
+    index = 0;
+    if (argc != 2)
     {
-        stack_b->top->number = stack_a->push_num;
-        stack_a->push_num = stack_b->next_num;
+        ft_printf("Error: Invalid Argument Count.\n");
     }
-    write(1, "pb", 2);
-    return (EXIT_SUCCESS);
+    while (argv[1][index])
+    {
+        result = ft_atoi(argv[1][index]);
+        ft_lstnew((void *)argv[1][index]);
+        ft_lstadd_back(stack_a, stack_a->top);
+        index++;
+    }
 }
