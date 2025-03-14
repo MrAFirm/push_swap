@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:49:27 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/07 21:34:43 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:17:04 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main(int argc, char **argv)
 {
     t_stack_a   *stack_a;
-    t_stack_b   *stack_b;
     t_node      *node;
     int         index;
     int         result;

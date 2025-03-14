@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:33:37 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/07 21:23:55 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:25:23 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct stack_a
 {
     t_node		*top;
-    t_stack_a   *next_num;
+    // t_stack_a   *next_num;
     t_stack_b   *push_num;
     
 }   t_stack_a;
@@ -28,7 +28,7 @@ typedef struct stack_a
 typedef struct stack_b
 {
     t_node		*top;
-    t_stack_b   *next_num;
+    // t_stack_b   *next_num;
     t_stack_a   *push_num;
     
 }   t_stack_b;
@@ -58,5 +58,14 @@ int rotate_rr(t_stack_a *stack_a, t_stack_b *stack_b);
 /* Reverse Rotate */
 int rrotate_a(t_stack_a *stack_a);
 int rrotate_b(t_stack_b *stack_b);
+
+/* Sorting Utils */
+t_stack_a   *smallest_num_a(t_stack_a *stack_a);
+t_stack_a   *biggest_num_a(t_stack_a *stack_a);
+
+/* Sorting Algs */
+int sort_2(t_stack_a *stack_a);
+int sort_3(t_stack_a *stack_a);
+int sort_4(t_stack_a *stack_a);
 
 #endif
