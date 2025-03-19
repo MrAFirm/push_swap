@@ -5,84 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/22 15:29:08 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2024/06/24 15:09:06 by lkhye-ya         ###   ########.fr       */
+/*   Created: 2025/03/19 18:40:18 by lkhye-ya          #+#    #+#             */
+/*   Updated: 2025/03/19 18:40:20 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-int	count_substr(char const *s, char c)
+int count_substr(char const *s, char c)
 {
-	size_t	i;
-	size_t	count;
+    int     count;
+    int     in_str;
 
-	count = 1;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-		{
-			if (s[i + 1] != c)
-				count++;
-		}
-		i++;
-	}
-	if (s[0] == c)
-		count--;
-	if (s[i - 1] == c)
-		count--;
-	return (count);
+    count = 0;
+    in_str = 0;
+    while (*s)
+    {
+        if (*s != c && !in_str)
+        {
+            count++;
+            in_str = 1;
+        }
+        else if (*s == c)
+            in_str = 0;
+        s++;
+    }
+    return (count);
 }
 
-int	ft_delimstrl(char const *s, char c)
+int delimstrl(char const *s, char c)
 {
-	size_t	len;
+    size_t  index;
 
-	len = 0;
-	while (s[len] != c && s[len] != '\0')
-		len++;
-	return (len);
+    index = 0;
+    while (s[index] && s[index] != c)
+        index++;
+    return (index);
 }
 
-void	putstr(char *dest, char const *str, int len)
+void    ft_mstrcpy(char *dest, char const *s, int len)
 {
-	int	i;
+    size_t  index;
 
-	i = 0;
-	while (i < len)
-	{
-		dest[i] = str[i];
-		i++;
-	}
-	dest[i] = '\0';
+    index = 0;
+    while (index < len)
+    {
+        dest[index] = s[index];
+        index++;
+    }
+    dest[index] = '\0';
 }
 
-char	**ft_split(char const *s, char c)
+void    free_arr(char **result_arr)
 {
-	char	**str;
-	size_t	i;
-	size_t	j;
-	size_t	count;
+    int index;
 
-	i = 0;
-	j = 0;
-	if (!s)
-		return (NULL);
-	count = count_substr(s, c);
-	str = malloc (sizeof(char *) * (count + 1));
-	if (!str)
-		return (NULL);
-	while (i < ft_strlen(s) && j < count)
-	{
-		while (s[i] == c)
-			i++;
-		str[j] = malloc(sizeof(char) * (ft_delimstrl(s + i, c) + 1));
-		if (!str[j])
-			return (NULL);
-		putstr(str[j++], s + i, ft_delimstrl(s + i, c));
-		i += ft_delimstrl(s + i, c);
-	}
-	str[j] = NULL;
-	return (str);
+    index = 0;
+    if (result_arr != NULL)
+    {
+        while (result_arr[index])
+            free(result_arr[index++]);
+        free(result_arr);
+    }
+
+}
+
+char    **ft_split(char const *s, char c)
+{
+    int index;
+    int jndex;
+    char    **result_arr;
+
+    index = 0;
+    jndex = 0;
+    while (!s)
+        return (NULL);
+    result_arr = malloc(sizeof(char *) * count_substr(s, c) + 1);
+    if (!result_arr)
+        return (NULL);
+    while (index < ft_strlen(s) && jndex < count_substr(s, c))
+    {
+        while (s[index] == c)
+            index++;
+        result_arr[jndex] = malloc(sizeof(char) * (delimstrl(s + index, c) + 1));
+        ft_mstrcpy(result_arr[jndex++], s + index, delimstrl(s + index, c));
+        index += delimstrl(s + index, c);
+    }
+    result_arr[jndex] = NULL;
+    // free_arr(result_arr);
+    return (result_arr);
 }

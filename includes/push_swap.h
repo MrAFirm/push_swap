@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:33:37 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/14 14:25:23 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/19 21:59:29 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
+
+typedef struct node
+{
+    int 	number;
+    t_node  *next_num;
+}   t_node;
 
 typedef struct stack_a
 {
@@ -32,12 +38,6 @@ typedef struct stack_b
     t_stack_a   *push_num;
     
 }   t_stack_b;
-
-typedef struct node
-{
-    int 	number;
-    t_node  *next_num;
-}   t_node;
 
 /* Operations */
 
@@ -67,5 +67,9 @@ t_stack_a   *biggest_num_a(t_stack_a *stack_a);
 int sort_2(t_stack_a *stack_a);
 int sort_3(t_stack_a *stack_a);
 int sort_4(t_stack_a *stack_a);
+
+/* Main Functions */
+t_node  *first_node(int value);
+t_node  *get_last_node(t_node *head);
 
 #endif
