@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:33:37 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/19 21:59:29 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/19 22:32:25 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ int sort_3(t_stack_a *stack_a);
 int sort_4(t_stack_a *stack_a);
 
 /* Main Functions */
+void    stack_a_init(t_stack_a *stack_a);
 t_node  *first_node(int value);
-t_node  *get_last_node(t_node *head);
+t_node  *get_last_node(t_stack_a *stack_a);
+void    *node_add_back(t_stack_a *stack_a, t_node *new);
 
 #endif

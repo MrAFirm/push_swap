@@ -6,11 +6,11 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:40:18 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/19 18:40:20 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/19 22:32:40 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 int count_substr(char const *s, char c)
 {
