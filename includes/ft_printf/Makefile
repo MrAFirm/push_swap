@@ -6,11 +6,11 @@
 #    By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/18 20:00:58 by lkhye-ya          #+#    #+#              #
-#    Updated: 2024/07/18 20:24:43 by lkhye-ya         ###   ########.fr        #
+#    Updated: 2025/03/21 18:00:39 by lkhye-ya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = ft_printf.a
 
 SRCS = strlen.c putnbr.c putchar.c putstr.c putuint.c \
 puthex.c putptr.c ft_printf.c \

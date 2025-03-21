@@ -6,13 +6,13 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:40:18 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/19 22:32:40 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:58:01 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int count_substr(char const *s, char c)
+size_t count_substr(char const *s, char c)
 {
     int     count;
     int     in_str;
@@ -43,7 +43,7 @@ int delimstrl(char const *s, char c)
     return (index);
 }
 
-void    ft_mstrcpy(char *dest, char const *s, int len)
+void    ft_mstrcpy(char *dest, char const *s, size_t len)
 {
     size_t  index;
 
@@ -72,8 +72,8 @@ void    free_arr(char **result_arr)
 
 char    **ft_split(char const *s, char c)
 {
-    int index;
-    int jndex;
+    size_t  index;
+    size_t  jndex;
     char    **result_arr;
 
     index = 0;

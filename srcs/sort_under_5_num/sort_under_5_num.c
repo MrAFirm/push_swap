@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:50 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/14 18:45:36 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:48:50 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int sort_2(t_stack_a *stack_a)
     t_stack_a   *temp;
     
     temp = smallest_num_a(stack_a);
-    if ((stack_a->top->number > stack_a->top->next_num) && stack_a->top->number != temp)
+    if ((stack_a->top->number > stack_a->top->next->number) && stack_a->top->number != temp)
     {
-        if (stack_a->top->next_num == temp)
+        if (stack_a->top->next->number == temp)
             return (swap_a(stack_a));
     }
     if (stack_a->top->number == temp)
@@ -36,15 +36,15 @@ int sort_3(t_stack_a *stack_a)
     temp = smallest_num_a(stack_a);
     temp2 = biggest_num_a(stack_a);
     if (stack_a->top->number == temp)
-        stack_a->top->number = stack_a->top->next_num;
-    else if (stack_a->top->number != temp && stack_a->top->next_num == temp)
+        stack_a->top->number = stack_a->top->next->number;
+    else if (stack_a->top->number != temp && stack_a->top->next->number == temp)
         return (swap_a(stack_a));
-    else if (stack_a->top->number == temp2 && stack_a->top->next_num == temp)
+    else if (stack_a->top->number == temp2 && stack_a->top->next->number == temp)
     {
         swap_a(stack_a);
         rrotate_a(stack_a);
     }
-    if ((stack_a->top->number > stack_a->top->next_num) || stack_a->top->number != temp)
+    if ((stack_a->top->number > stack_a->top->next->number) || stack_a->top->number != temp)
     {
         if (stack_a->top->number == temp2)
         {
@@ -59,7 +59,7 @@ int sort_3(t_stack_a *stack_a)
     return (EXIT_SUCCESS);
 }
 
-int sort_4(t_stack_a *stack_a)
-{
+// int sort_4(t_stack_a *stack_a)
+// {
     
-}
+// }

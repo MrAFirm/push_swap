@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:33:37 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/19 22:32:25 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:33:04 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 
 typedef struct node
 {
-    int 	number;
-    t_node  *next_num;
+    void 	*number;
+    struct node  *next;
 }   t_node;
 
 typedef struct stack_a
 {
     t_node		*top;
     // t_stack_a   *next_num;
-    t_stack_b   *push_num;
+    struct stack_b   *push_num;
     
 }   t_stack_a;
 
@@ -35,7 +35,7 @@ typedef struct stack_b
 {
     t_node		*top;
     // t_stack_b   *next_num;
-    t_stack_a   *push_num;
+    struct stack_a   *push_num;
     
 }   t_stack_b;
 
@@ -70,7 +70,7 @@ int sort_4(t_stack_a *stack_a);
 
 /* Main Functions */
 void    stack_a_init(t_stack_a *stack_a);
-t_node  *first_node(int value);
+t_node  *first_node(void *value);
 t_node  *get_last_node(t_stack_a *stack_a);
 void    *node_add_back(t_stack_a *stack_a, t_node *new);
 
