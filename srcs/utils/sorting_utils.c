@@ -6,44 +6,54 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:07:34 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/21 17:49:42 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:55:17 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack_a   *smallest_num_a(t_stack_a *stack_a)
+void	find_min_max_nodes(t_stack_a *stack_a, t_node **min, t_node **max)
 {
-    void    *temp;
+	t_node  *current;
 
-    temp = 0;
-    while (stack_a)
-    {
-        if (stack_a->top->number > stack_a->top->next->number)
-        {
-            temp = stack_a->top->number;
-            stack_a->top->number = stack_a->top->next->number;
-            stack_a->top->next->number = temp;
-        }
-        stack_a = stack_a->top->next->number;
-    }
-    return (stack_a->top->number);
+	(*min) = stack_a->top;
+	(*max) = stack_a->top;
+	current = stack_a->top->next;
+
+	while (current)
+	{
+		if (current->number < (*min)->number)
+			(*min) = current;
+		if (current->number > (*max)->number)
+			(*max) = current;
+		current = current->next;
+		ft_printf("Biggest node value: %d\n", (*max)->number);
+		ft_printf("Smallest node value: %d\n", (*min)->number);
+	}
 }
 
-t_stack_a   *biggest_num_a(t_stack_a *stack_a)
+int stack_a_size(t_stack_a *stack_a)
 {
-    void    *temp;
+	int count;
 
-    temp = 0;
-    while (stack_a)
-    {
-        if (stack_a->top->number < stack_a->top->next->number)
-        {
-            temp = stack_a->top->number;
-            stack_a->top->number = stack_a->top->next->number;
-            stack_a->top->next->number = temp;
-        }
-        stack_a = stack_a->top->next->number;
-    }
-    return (stack_a->top->number);
+	count = 0;
+	while (stack_a)
+	{
+		stack_a->top->number = stack_a->top->next->number;
+		count++;
+	}
+	return (count);
+}
+
+int stack_b_size(t_stack_b *stack_b)
+{
+	int count;
+
+	count = 0;
+	while (stack_b)
+	{
+		stack_b->top->number = stack_b->top->next->number;
+		count++;
+	}
+	return (count);
 }

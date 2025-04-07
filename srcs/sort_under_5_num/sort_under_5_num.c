@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:50 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/21 17:48:50 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:32:38 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,68 @@
 
 int sort_2(t_stack_a *stack_a)
 {
-    t_stack_a   *temp;
-    
-    temp = smallest_num_a(stack_a);
-    if ((stack_a->top->number > stack_a->top->next->number) && stack_a->top->number != temp)
-    {
-        if (stack_a->top->next->number == temp)
-            return (swap_a(stack_a));
-    }
-    if (stack_a->top->number == temp)
-        return (EXIT_SUCCESS);
-    return (EXIT_SUCCESS);
+	int   temp;
+	
+	if (!stack_a->top || !stack_a->top->next)
+		return (EXIT_FAILURE);
+	temp = stack_a->top->next->number;
+	if (stack_a->top->number < temp)
+		return (EXIT_SUCCESS);
+	if (stack_a->top->number > temp)
+		return (swap_a(stack_a));
+	return (EXIT_SUCCESS);
 }  
 
 
 int sort_3(t_stack_a *stack_a)
 {
-    t_stack_a   *temp;
-    t_stack_a   *temp2;
+	t_node	*min;
+	t_node	*max;
+	t_node	*current;
+	t_node	*next;
+	t_node	*last;
 
-    temp = smallest_num_a(stack_a);
-    temp2 = biggest_num_a(stack_a);
-    if (stack_a->top->number == temp)
-        stack_a->top->number = stack_a->top->next->number;
-    else if (stack_a->top->number != temp && stack_a->top->next->number == temp)
-        return (swap_a(stack_a));
-    else if (stack_a->top->number == temp2 && stack_a->top->next->number == temp)
-    {
-        swap_a(stack_a);
-        rrotate_a(stack_a);
-    }
-    if ((stack_a->top->number > stack_a->top->next->number) || stack_a->top->number != temp)
-    {
-        if (stack_a->top->number == temp2)
-        {
-            rotate_a(stack_a);
-            swap_a(stack_a);
-        }
-    }
-    else if (stack_a->top->number == temp)
-        return (rotate_a(stack_a));
-    else if (stack_a->top->number == temp2)
-        return (rrotate_a(stack_a));
-    return (EXIT_SUCCESS);
+	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next)
+		return (EXIT_FAILURE);
+	find_min_max_nodes(stack_a, &min, &max);
+	ft_printf("value of max: %d\n", max->number);
+	ft_printf("value of min: %d\n", min->number);
+	current = stack_a->top;
+	next = current->next;
+	last = next->next;
+	if (current->number == max->number && next->number == min->number)
+		rotate_a(stack_a);
+	reset_nodes(stack_a, &current, &next, &last);
+	if (current->number == min->number && current->next)
+		current = current->next;
+	if (current->number == min->number && last->number == max->number)
+		return (EXIT_SUCCESS);
+	if (current->number > next->number && current->number < max->number)
+		swap_a(stack_a);
+	reset_nodes(stack_a, &current, &next, &last);
+	if (current->number == max->number && next->number != min->number)
+	{
+		ft_printf("I'm here\n");
+		rotate_a(stack_a);
+		swap_a(stack_a);
+	}
+	reset_nodes(stack_a, &current, &next, &last);
+	if (current->number == min->number && next->number == max->number)
+	{
+		swap_a(stack_a);
+		rotate_a(stack_a);
+	}
+	reset_nodes(stack_a, &current, &next, &last);
+	if (current->number != min->number && next->number == max->number)
+		rrotate_a(stack_a);
+	reset_nodes(stack_a, &current, &next, &last);
+	return (EXIT_SUCCESS);
 }
 
-// int sort_4(t_stack_a *stack_a)
-// {
-    
-// }
+int	reset_nodes(t_stack_a *stack_a, t_node **current, t_node **next, t_node **last)
+{
+	*current = stack_a->top;
+	*next = (*current)->next;
+	*last = (*next)->next;
+	return (EXIT_SUCCESS);
+}

@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:49:48 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/03/21 17:27:31 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:04:33 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,21 @@
 
 int rrotate_b(t_stack_b *stack_b)
 {
-    int i;
-    int j;
-    int temp;
+    t_node  *prev;
+    t_node  *last;
     
-    i = ft_lstsize(stack_b) - 1;
-    j = 0;
-    if (stack_b)
+    if (!stack_b || !stack_b->top || !stack_b->top->next)
+        return (EXIT_FAILURE);
+    last = stack_b->top;
+    while (last->next)
     {
-        while (j < i)
-        {
-            stack_b->top->number = stack_b->top->next->number;
-            j++;
-        }
-        temp = stack_b->top->number;
-        while (j >= 0)
-        {
-            stack_b->top->number = stack_b->top->next->number;
-            j--;
-        }
-        stack_b->top->number = temp;
+        prev = last;
+        last = last->next;
     }
+    prev->next = NULL;
+    last->next = stack_b->top;
+    stack_b->top = last;
     write(1, "rrb", 3);
+    write(1, "\n", 1);
     return (EXIT_SUCCESS);
 }
