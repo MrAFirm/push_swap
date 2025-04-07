@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:50 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/07 20:32:38 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/07 23:13:02 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int sort_3(t_stack_a *stack_a)
 	reset_nodes(stack_a, &current, &next, &last);
 	if (current->number == max->number && next->number != min->number)
 	{
-		ft_printf("I'm here\n");
 		rotate_a(stack_a);
 		swap_a(stack_a);
 	}
