@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:28:39 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/11 21:41:11 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/11 22:12:40 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,22 @@ int main (int argc, char **argv)
         return (EXIT_FAILURE);
     if (argc > 1 && argc <= 100)
     {
-        stack_a = stack_a_init();
-        while (index < argc)
+        if (argv[index] >= '0' && argv[index] <= '9')
         {
-            num = ft_atoi(argv[index]);
-            node_add_back_a(stack_a, num);
-            index++;
-            t_node *cur = stack_a->top;
-            int i = 1;
-            while (cur)
+            stack_a = stack_a_init();
+            while (index < argc)
             {
-                ft_printf("I'm here\n");
-                ft_printf("Node %d value: %d, addr: %p\n", i++, cur->number, (void *)cur);
-                cur = cur->next;
+                num = ft_atoi(argv[index]);
+                node_add_back_a(stack_a, num);
+                index++;
+                t_node *cur = stack_a->top;
+                int i = 1;
+                while (cur)
+                {
+                    ft_printf("I'm here\n");
+                    ft_printf("Node %d value: %d, addr: %p\n", i++, cur->number, (void *)cur);
+                    cur = cur->next;
+                }
             }
         }
         if (!argv[3])
