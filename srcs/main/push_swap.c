@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:28:39 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/07 14:56:54 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:41:11 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@ int main (int argc, char **argv)
 {
     int         index;
     t_stack_a   *stack_a;
+    t_stack_b   *stack_b;
+    t_value     *var_value;
     int         num;
 
     index = 1;
+    var_value = malloc(sizeof(t_value));
+    if (!var_value)
+        return (EXIT_FAILURE);
     if (argc > 1 && argc <= 100)
     {
         stack_a = stack_a_init();
         while (index < argc)
         {
             num = ft_atoi(argv[index]);
-            node_add_back(stack_a, num);
+            node_add_back_a(stack_a, num);
             index++;
             t_node *cur = stack_a->top;
             int i = 1;
@@ -37,10 +42,15 @@ int main (int argc, char **argv)
             }
         }
         if (!argv[3])
-            sort_2(stack_a);
+            sort_2(stack_a, var_value);
         if (!argv[4])
-            sort_3(stack_a);
-              
+            sort_3(stack_a, var_value);
+        if (!argv[5])
+        {
+            stack_b = stack_b_init();
+            node_add_back_b(stack_b, num);
+            sort_4(stack_a, var_value);
+        }
     }
     return (0);
 }
@@ -81,19 +91,7 @@ t_node  *get_last_node_a(t_stack_a *stack_a)
     return (current);
 }
 
-t_node  *get_last_node_b(t_stack_b *stack_b)
-{
-    t_node      *current;
-
-    if (!stack_b || !stack_b->top)
-        return (NULL);
-    current = stack_b->top;
-    while (current->next)
-        current = current->next;
-    return (current);
-}
-
-int node_add_back(t_stack_a *stack_a, int value)
+int node_add_back_a(t_stack_a *stack_a, int value)
 {
     t_node  *last;
     t_node  *new;
@@ -120,6 +118,7 @@ int node_add_back(t_stack_a *stack_a, int value)
     }
     return (EXIT_SUCCESS);
 }
+
 
 // void    free_nodes(t_stack_a *stack_a, t_node *node)
 // {

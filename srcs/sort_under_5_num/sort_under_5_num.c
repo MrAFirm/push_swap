@@ -6,27 +6,70 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:50 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/07 23:13:02 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:58:05 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int sort_2(t_stack_a *stack_a)
+void	sort_2(t_stack_a *stack_a, t_value *var_value)
 {
-	int   temp;
-	
-	if (!stack_a->top || !stack_a->top->next)
-		return (EXIT_FAILURE);
-	temp = stack_a->top->next->number;
-	if (stack_a->top->number < temp)
-		return (EXIT_SUCCESS);
-	if (stack_a->top->number > temp)
-		return (swap_a(stack_a));
-	return (EXIT_SUCCESS);
+	if (!stack_a || !stack_a->top || !stack_a->top->next)
+		return ; 
+	var_value->a = stack_a->top->number;
+	var_value->b = stack_a->top->next->number;
+	if (var_value->a > var_value->b)
+		swap_a(stack_a);
+	if (var_value->a < var_value->b)
+		return ;
 }  
 
 
+void	sort_3(t_stack_a *stack_a, t_value *var_value)
+{
+	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next)
+		return ;
+	var_value->a = stack_a->top->number;
+	var_value->b = stack_a->top->next->number;
+	var_value->c = stack_a->top->next->next->number;
+	if (var_value->a > var_value->b && var_value->b < var_value->c && var_value->a < var_value->c)
+		swap_a(stack_a);
+	if (var_value->a < var_value->b && var_value->b > var_value->c && var_value->a > var_value->c)
+		rrotate_a(stack_a);
+	if (var_value->a < var_value->b && var_value->b < var_value->c && var_value->a < var_value->c)
+		return ;
+	if (var_value->a < var_value->b && var_value->b > var_value->c && var_value->a < var_value->c)
+	{
+		swap_a(stack_a);
+		rotate_a(stack_a);
+	}
+	if (var_value->a > var_value->b && var_value->b < var_value->c && var_value->a > var_value->c)
+		rotate_a(stack_a);
+	if (var_value->a > var_value->b && var_value->b > var_value->c && var_value->a > var_value->c)
+	{
+		rotate_a(stack_a);
+		swap_a(stack_a);
+	}
+}
+
+void	sort_4(t_stack_a *stack_a, t_value *var_value)
+{
+	t_node	*min;
+	t_node	*max;
+	t_stack_b	*stack_b;
+	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next)
+		return ;
+	var_value->a = stack_a->top->number;
+	var_value->b = stack_a->top->next->number;
+	var_value->c = stack_a->top->next->next->number;
+	var_value->d = stack_a->top->next->next->next->number;
+	find_min_max_nodes(stack_a, &min, &max);
+	if (var_value->a < var_value->b && var_value->b < var_value->c && var_value->c < var_value->d && var_value->a < var_value->d)
+		return ;
+	
+}
+
+/*
 int sort_3(t_stack_a *stack_a)
 {
 	t_node	*min;
@@ -35,14 +78,12 @@ int sort_3(t_stack_a *stack_a)
 	t_node	*next;
 	t_node	*last;
 
-	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next)
-		return (EXIT_FAILURE);
-	find_min_max_nodes(stack_a, &min, &max);
-	ft_printf("value of max: %d\n", max->number);
-	ft_printf("value of min: %d\n", min->number);
 	current = stack_a->top;
 	next = current->next;
 	last = next->next;
+	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next)
+		return (EXIT_FAILURE);
+	find_min_max_nodes(stack_a, &min, &max);
 	if (current->number == max->number && next->number == min->number)
 		rotate_a(stack_a);
 	reset_nodes(stack_a, &current, &next, &last);
@@ -55,11 +96,11 @@ int sort_3(t_stack_a *stack_a)
 	reset_nodes(stack_a, &current, &next, &last);
 	if (current->number == max->number && next->number != min->number)
 	{
-		rotate_a(stack_a);
-		swap_a(stack_a);
-	}
-	reset_nodes(stack_a, &current, &next, &last);
-	if (current->number == min->number && next->number == max->number)
+			rotate_a(stack_a);
+			swap_a(stack_a);
+		}
+		reset_nodes(stack_a, &current, &next, &last);
+		if (current->number == min->number && next->number == max->number)
 	{
 		swap_a(stack_a);
 		rotate_a(stack_a);
@@ -70,11 +111,4 @@ int sort_3(t_stack_a *stack_a)
 	reset_nodes(stack_a, &current, &next, &last);
 	return (EXIT_SUCCESS);
 }
-
-int	reset_nodes(t_stack_a *stack_a, t_node **current, t_node **next, t_node **last)
-{
-	*current = stack_a->top;
-	*next = (*current)->next;
-	*last = (*next)->next;
-	return (EXIT_SUCCESS);
-}
+*/

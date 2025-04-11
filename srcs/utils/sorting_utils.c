@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:07:34 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/03 15:55:17 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:56:51 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,21 @@ int stack_b_size(t_stack_b *stack_b)
 		count++;
 	}
 	return (count);
+}
+
+void	reset_nodes(t_stack_a *stack_a, t_value *var_value)
+{
+	var_value->a = stack_a->top->number;
+	var_value->b = stack_a->top->next->number;
+	var_value->c = stack_a->top->next->next->number;
+}
+
+void	push(t_stack_a *stack_a, t_stack_b *stack_b)
+{
+	t_node	*temp;
+	
+	temp = stack_a->top;
+	stack_a->top = stack_a->top->next;
+	temp->next = stack_b->top;
+	stack_b->top = temp;
 }
