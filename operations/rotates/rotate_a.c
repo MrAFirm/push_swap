@@ -12,13 +12,15 @@
 
 #include "../../includes/push_swap.h"
 
-int rotate_a(t_stack_a *stack_a)
+void	rotate_a(t_stack_a *stack_a)
 {
 	t_node	*first;
 	t_node	*last;
 
 	if (!stack_a || !stack_a->top || !stack_a->top->next)
-		return (EXIT_FAILURE);
+	{
+		return ;
+	}
 	first = stack_a->top;
 	stack_a->top = first->next;
 	last = stack_a->top;
@@ -28,5 +30,4 @@ int rotate_a(t_stack_a *stack_a)
 	first->next = NULL;
 	write(1, "ra", 2);
 	write(1, "\n", 1);
-	return (EXIT_SUCCESS);
 }

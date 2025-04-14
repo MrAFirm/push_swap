@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int swap_ss(t_stack_a *stack_a, t_stack_b *stack_b)
+void    swap_ss(t_stack_a *stack_a, t_stack_b *stack_b)
 {
     if (stack_a && stack_b)
     {
@@ -20,5 +20,5 @@ int swap_ss(t_stack_a *stack_a, t_stack_b *stack_b)
         swap_b(stack_b);
     }
     write(1, "ss", 2);
-    return (EXIT_FAILURE);
+    write(1, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:33:37 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/11 21:57:34 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:13:08 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,35 +64,35 @@ int			node_add_back_b(t_stack_b *stack_b, int value);
 /* Operations */
 
 /* Swaps */
-int swap_a(t_stack_a *stack_a);
-int swap_b(t_stack_b *stack_b);
-int swap_ss(t_stack_a *stack_a, t_stack_b *stack_b);
+void	swap_a(t_stack_a *stack_a);
+void	swap_b(t_stack_b *stack_b);
+void	swap_ss(t_stack_a *stack_a, t_stack_b *stack_b);
 
 /* Pushes */
-int push_a(t_stack_a *stack_a, t_stack_b *stack_b);
-int push_b(t_stack_a *stack_a, t_stack_b *stack_b);
+void	push_a(t_stack_a *stack_a, t_stack_b *stack_b);
+void	push_b(t_stack_a *stack_a, t_stack_b *stack_b);
 
 /* Rotates */
-int rotate_a(t_stack_a *stack_a);
-int rotate_b(t_stack_b *stack_b);
-int rotate_rr(t_stack_a *stack_a, t_stack_b *stack_b);
+void	rotate_a(t_stack_a *stack_a);
+void	rotate_b(t_stack_b *stack_b);
+void	rotate_rr(t_stack_a *stack_a, t_stack_b *stack_b);
 
 /* Reverse Rotate */
-int rrotate_a(t_stack_a *stack_a);
-int rrotate_b(t_stack_b *stack_b);
+void	rrotate_a(t_stack_a *stack_a);
+void	rrotate_b(t_stack_b *stack_b);
+void    rrrotate(t_stack_a *stack_a, t_stack_b *stack_b);
 
 /* Sorting Utils */
 void	find_min_max_nodes(t_stack_a *stack_a, t_node **min, t_node **max);
 int     stack_a_size(t_stack_a *stack_a);
 int     stack_b_size(t_stack_b *stack_b);
 void	reset_nodes(t_stack_a *stack_a, t_value *var_value);
-void	push(t_stack_a *stack_a, t_stack_b *stack_b);
 
 /* Sorting Algs */
 void	sort_2(t_stack_a *stack_a, t_value *var_value);
 void	sort_3(t_stack_a *stack_a, t_value *var_value);
-void	sort_4(t_stack_a *stack_a, t_value *var_value);
-
+void	sort_4(t_stack_a *stack_a, t_stack_b *stack_b, t_value *var_value);
+void	sort_5(t_stack_a *stack_a, t_stack_b *stack_b, t_value *var_value);
 
 /* Main Functions */
 t_node		*new_node(int value);

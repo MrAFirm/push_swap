@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:28:39 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/11 22:12:40 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:13:26 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main (int argc, char **argv)
     t_stack_a   *stack_a;
     t_stack_b   *stack_b;
     t_value     *var_value;
+    t_node      *cur;
     int         num;
 
     index = 1;
@@ -26,35 +27,32 @@ int main (int argc, char **argv)
         return (EXIT_FAILURE);
     if (argc > 1 && argc <= 100)
     {
-        if (argv[index] >= '0' && argv[index] <= '9')
+        stack_a = stack_a_init();
+        while (index < argc)
         {
-            stack_a = stack_a_init();
-            while (index < argc)
+            num = ft_atoi(argv[index]);
+            node_add_back_a(stack_a, num);
+            cur = stack_a->top;
+            index++;
+            int i = 1;
+            while (cur)
             {
-                num = ft_atoi(argv[index]);
-                node_add_back_a(stack_a, num);
-                index++;
-                t_node *cur = stack_a->top;
-                int i = 1;
-                while (cur)
-                {
-                    ft_printf("I'm here\n");
-                    ft_printf("Node %d value: %d, addr: %p\n", i++, cur->number, (void *)cur);
-                    cur = cur->next;
-                }
+                ft_printf("I'm here\n");
+                ft_printf("Node %d value: %d, addr: %p\n", i++, cur->number, (void *)cur);
+                cur = cur->next;
             }
         }
-        if (!argv[3])
-            sort_2(stack_a, var_value);
-        if (!argv[4])
-            sort_3(stack_a, var_value);
-        if (!argv[5])
-        {
-            stack_b = stack_b_init();
-            node_add_back_b(stack_b, num);
-            sort_4(stack_a, var_value);
-        }
     }
+    stack_b = stack_b_init();
+    node_add_back_b(stack_b, num);
+    if (!argv[3])
+        sort_2(stack_a, var_value);
+    if (!argv[4])
+        sort_3(stack_a, var_value);
+    if (!argv[5])
+        sort_4(stack_a, stack_b, var_value);
+    if (!argv[6])
+        sort_5(stack_a, stack_b, var_value);
     return (0);
 }
 

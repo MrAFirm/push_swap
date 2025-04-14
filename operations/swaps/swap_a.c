@@ -12,21 +12,21 @@
 
 #include "../../includes/push_swap.h"
 
-int swap_a(t_stack_a *stack_a)
+void	swap_a(t_stack_a *stack_a)
 {
 	t_node	*first;
 	t_node	*second;
 	
 	if (!stack_a || !stack_a->top || !stack_a->top->next)
-		return (EXIT_FAILURE);
+	{
+		return ;
+	}
 	first = stack_a->top;
 	second = first->next;
-
 	first->next = second->next;
 	second->next = first;
 	stack_a->top = second;
 	
 	write(1, "sa", 2);
 	write(1, "\n", 1);
-	return (EXIT_SUCCESS);
 }

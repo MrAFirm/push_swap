@@ -12,13 +12,15 @@
 
 #include "../../includes/push_swap.h"
 
-int rrotate_a(t_stack_a *stack_a)
+void    rrotate_a(t_stack_a *stack_a)
 {
     t_node  *prev;
     t_node  *last;
     
     if (!stack_a || !stack_a->top || !stack_a->top->next)
-        return (EXIT_FAILURE);
+    {
+        return ;
+    }
     prev = NULL;
     last = stack_a->top;
     while (last->next)
@@ -31,5 +33,4 @@ int rrotate_a(t_stack_a *stack_a)
     stack_a->top = last;
     write(1, "rra", 3);
     write(1, "\n", 1);
-    return (EXIT_SUCCESS);
 }

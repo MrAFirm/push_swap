@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int rotate_rr(t_stack_a *stack_a, t_stack_b *stack_b)
+void    rotate_rr(t_stack_a *stack_a, t_stack_b *stack_b)
 {
     if (stack_a && stack_b)
     {
@@ -20,5 +20,5 @@ int rotate_rr(t_stack_a *stack_a, t_stack_b *stack_b)
         rotate_b(stack_b);
     }
     write(1, "rr", 2);
-    return (EXIT_SUCCESS);
+    write(1, "\n", 1);
 }
