@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:28:39 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/14 23:13:26 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:14:52 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ int main (int argc, char **argv)
             int i = 1;
             while (cur)
             {
-                ft_printf("I'm here\n");
                 ft_printf("Node %d value: %d, addr: %p\n", i++, cur->number, (void *)cur);
                 cur = cur->next;
             }
         }
     }
     stack_b = stack_b_init();
-    node_add_back_b(stack_b, num);
     if (!argv[3])
         sort_2(stack_a, var_value);
     if (!argv[4])

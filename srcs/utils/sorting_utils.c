@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:07:34 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/14 15:51:20 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:29:13 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	find_min_max_nodes(t_stack_a *stack_a, t_node **min, t_node **max)
 		if (current->number > (*max)->number)
 			(*max) = current;
 		current = current->next;
-		ft_printf("Biggest node value: %d\n", (*max)->number);
-		ft_printf("Smallest node value: %d\n", (*min)->number);
 	}
 }
 
@@ -58,9 +56,57 @@ int stack_b_size(t_stack_b *stack_b)
 	return (count);
 }
 
+
+void	move_min_to_top_5(t_stack_a *stack_a)
+{
+	t_node	*min;
+	t_node	*max;
+	
+	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next || !stack_a->top->next->next->next || !stack_a->top->next->next->next->next)
+	return ;
+	find_min_max_nodes(stack_a, &min, &max);
+	if (stack_a->top->next->number == min->number)
+	swap_a(stack_a);
+	if (stack_a->top->next->next->number == min->number)
+	{
+		rotate_a(stack_a);
+		rotate_a(stack_a);
+	}
+	if (stack_a->top->next->next->next->number == min->number)
+	{
+		rrotate_a(stack_a);
+		rrotate_a(stack_a);
+	}
+	if (stack_a->top->next->next->next->next->number == min->number)
+	rrotate_a(stack_a);
+}
+
+void	move_min_to_top_4(t_stack_a *stack_a)
+{
+	t_node	*min;
+	t_node	*max;
+	
+	if (!stack_a || !stack_a->top || !stack_a->top->next || !stack_a->top->next->next || !stack_a->top->next->next->next)
+	return ;
+	find_min_max_nodes(stack_a, &min, &max);
+	if (stack_a->top->next->number == min->number)
+	swap_a(stack_a);
+	if (stack_a->top->next->next->number == min->number)
+	{
+		rotate_a(stack_a);
+		rotate_a(stack_a);
+	}
+	if (stack_a->top->next->next->next->number == min->number)
+	rrotate_a(stack_a);
+}
+
+/*
 void	reset_nodes(t_stack_a *stack_a, t_value *var_value)
 {
 	var_value->a = stack_a->top->number;
 	var_value->b = stack_a->top->next->number;
 	var_value->c = stack_a->top->next->next->number;
+	var_value->d = stack_a->top->next->next->next->number;
+	var_value->e = stack_a->top->next->next->next->next->number;
 }
+*/

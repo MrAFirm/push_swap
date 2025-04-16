@@ -20,10 +20,10 @@ void    push_a(t_stack_a *stack_a, t_stack_b *stack_b)
 	{
 		return ;
 	}
-	temp = stack_a->top;
-	stack_a->top = stack_a->top->next;
-	temp->next = stack_b->top;
-	stack_b->top = temp;
-    write(1, "pb", 2);
+	temp = stack_b->top;
+	stack_b->top = stack_b->top->next;
+	temp->next = stack_a->top;
+	stack_a->top = temp;
+    write(1, "pa", 2);
 	write(1, "\n", 1);
 }

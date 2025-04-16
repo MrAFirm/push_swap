@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:33:37 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/14 23:13:08 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:29:21 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct  data
 /* Stack_b initalisation */
 t_stack_b	*stack_b_init(void);
 t_node		*get_last_node_b(t_stack_b *stack_b);
-int			node_add_back_b(t_stack_b *stack_b, int value);
 
 /* Operations */
 
@@ -86,7 +85,8 @@ void    rrrotate(t_stack_a *stack_a, t_stack_b *stack_b);
 void	find_min_max_nodes(t_stack_a *stack_a, t_node **min, t_node **max);
 int     stack_a_size(t_stack_a *stack_a);
 int     stack_b_size(t_stack_b *stack_b);
-void	reset_nodes(t_stack_a *stack_a, t_value *var_value);
+void	move_min_to_top_5(t_stack_a *stack_a);
+void	move_min_to_top_4(t_stack_a *stack_a);
 
 /* Sorting Algs */
 void	sort_2(t_stack_a *stack_a, t_value *var_value);
