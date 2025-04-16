@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:01:50 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/16 18:29:38 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/16 22:24:15 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	sort_5(t_stack_a *stack_a, t_stack_b *stack_b, t_value *var_value)
 	var_value->c = stack_a->top->next->next->number;
 	var_value->d = stack_a->top->next->next->next->number;
 	var_value->e = stack_a->top->next->next->next->next->number;
-	if (var_value->a < var_value->b && var_value->b < var_value->c && var_value->c < var_value->d && var_value->d < var_value->e && var_value->a < var_value->d)
+	if (var_value->a < var_value->b && var_value->b < var_value->c && var_value->c < var_value->d && var_value->d < var_value->e && var_value->a < var_value->e)
 		return ;
 	move_min_to_top_5(stack_a);
 	push_b(stack_a, stack_b);
