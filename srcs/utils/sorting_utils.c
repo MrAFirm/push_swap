@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:07:34 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/16 18:29:13 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:48:02 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,34 @@ void	find_min_max_nodes(t_stack_a *stack_a, t_node **min, t_node **max)
 
 int stack_a_size(t_stack_a *stack_a)
 {
-	int count;
+	int		count;
+	t_node	*temp;
 
+	if (!stack_a || !stack_a->top)
+		return (EXIT_FAILURE);
 	count = 0;
-	while (stack_a)
+	temp = stack_a->top;
+	while (temp)
 	{
-		stack_a->top->number = stack_a->top->next->number;
 		count++;
+		temp = temp->next;
 	}
 	return (count);
 }
 
 int stack_b_size(t_stack_b *stack_b)
 {
-	int count;
+	int 	count;
+	t_node	*temp;
 
+	if (!stack_b || !stack_b->top)
+		return (EXIT_FAILURE);
 	count = 0;
-	while (stack_b)
+	temp = stack_b->top;
+	while (temp)
 	{
-		stack_b->top->number = stack_b->top->next->number;
 		count++;
+		temp = temp->next;
 	}
 	return (count);
 }

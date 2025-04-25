@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:33:37 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/16 18:29:21 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:38:57 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ typedef struct	var_value
 typedef struct node
 {
 	int			number;
+	int			index;
 	struct node	*next;
 }   t_node;
 
 typedef struct stack_a
 {
 	t_node			*top;
-	// t_stack_a   *next_num;
 	struct stack_b	*push_num;
 	
 }   t_stack_a;
@@ -43,7 +43,6 @@ typedef struct stack_a
 typedef struct stack_b
 {
 	t_node			*top;
-	// t_stack_b   *next_num;
 	struct stack_a	*push_num;
 	
 }   t_stack_b;
@@ -93,6 +92,10 @@ void	sort_2(t_stack_a *stack_a, t_value *var_value);
 void	sort_3(t_stack_a *stack_a, t_value *var_value);
 void	sort_4(t_stack_a *stack_a, t_stack_b *stack_b, t_value *var_value);
 void	sort_5(t_stack_a *stack_a, t_stack_b *stack_b, t_value *var_value);
+void	bubble_sort(int *arr, int index, int length);
+void	sort_indexing(t_stack_a *stack_a);
+void	radix_sort(t_stack_a *stack_a, t_stack_b *stack_b);
+
 
 /* Main Functions */
 t_node		*new_node(int value);

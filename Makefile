@@ -6,7 +6,7 @@
 #    By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 18:05:43 by lkhye-ya          #+#    #+#              #
-#    Updated: 2025/04/11 18:50:12 by lkhye-ya         ###   ########.fr        #
+#    Updated: 2025/04/21 21:30:40 by lkhye-ya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ AR = ar rcs
 
 PUSH_SWAP = push_swap
 
-SRCS = srcs/main/push_swap.c srcs/sort_under_5_num/sort_under_5_num.c srcs/utils/sorting_utils.c srcs/utils/stack_b_utils.c
+SRCS = srcs/main/push_swap.c srcs/sort_under_5_num/sort_under_5_num.c srcs/utils/sorting_utils.c srcs/utils/stack_b_utils.c srcs/radix_sort_alg/radix_sort.c
 OPERATIONS = operations/pushes/push_a.c operations/pushes/push_b.c operations/reverse_rotates/rrotate_a.c \
 		operations/reverse_rotates/rrotate_b.c operations/reverse_rotates/rrrotate.c operations/rotates/rotate_a.c operations/rotates/rotate_b.c \
 		operations/rotates/rotate_rr.c operations/swaps/swap_a.c operations/swaps/swap_b.c operations/swaps/swap_ss.c 

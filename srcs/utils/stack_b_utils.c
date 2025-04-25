@@ -6,7 +6,7 @@
 /*   By: lkhye-ya <lkhye-ya@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:18:14 by lkhye-ya          #+#    #+#             */
-/*   Updated: 2025/04/16 17:13:26 by lkhye-ya         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:45:24 by lkhye-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_stack_b    *stack_b_init(void)
     if (!stack_b)
         return (NULL);
     stack_b->top = NULL;
-    ft_printf("Stack b initialized at: %p\n", (void *)stack_b);
     return (stack_b);
 }
 t_node  *get_last_node_b(t_stack_b *stack_b)
